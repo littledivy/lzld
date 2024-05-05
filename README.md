@@ -1,4 +1,4 @@
-A `ld -lazy_framework` for macOS.
+A `ld -lazy_framework` for macOS. Designed to build Deno.
 
 ## Usage
 
