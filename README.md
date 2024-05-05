@@ -12,6 +12,14 @@ rustflags = [
 ]
 ```
 
+### Usage without `lzld` wrapper
+
+1. `rustc -Z link-native-libraries=no -L/path/to/lzld -llzld`:
+Requires nightly but doesn't need a wrapper linker.
+
+2. Manaully source modification: Remove `#[link]` attributes
+from all dependencies and link to `liblzld.a`.
+
 ## Design 
 
 It's pretty simple. Drop in `lzld` as the linker.
@@ -28,10 +36,4 @@ Supported frameworks:
 - TODO
 -->
 
-## Usage without `lzld` wrapper
 
-1. `rustc -Z link-native-libraries=no -L/path/to/lzld -llzld`:
-Requires nightly but doesn't need a wrapper linker.
-
-2. Manaully source modification: Remove `#[link]` attributes
-from all dependencies and link to `liblzld.a`.
