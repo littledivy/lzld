@@ -22,10 +22,10 @@ jobs:
         with:
           deno-version: v1.x
 
-     - name: Install LLVM and Clang
-       uses: KyleMayes/install-llvm-action@v2
-       with:
-         version: "18.0"
+      - name: Install LLVM and Clang
+        uses: KyleMayes/install-llvm-action@v2
+        with:
+          version: "18.0"
 
       - name: Check versions
         run: |
