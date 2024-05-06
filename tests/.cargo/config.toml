@@ -1,0 +1,7 @@
+[target.aarch64-apple-darwin]
+rustflags = [
+  "-C",
+  "linker=./lld",
+  "-C",
+  "link-args=-L../ -llzld_arm64"
+]
