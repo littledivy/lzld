@@ -21,6 +21,11 @@ jobs:
         uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
+      - name: Check versions
+        run: |
+          lld
+          chmod +x tests/lld
+          tests/lld
 
       - name: Run tests
         run: cd tests && ./lld && ./test.ts
