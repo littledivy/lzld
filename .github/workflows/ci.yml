@@ -22,10 +22,14 @@ jobs:
         with:
           deno-version: v1.x
 
+      - name: Arch
+        run: uname -a
+
       - name: Install LLVM and Clang
         uses: KyleMayes/install-llvm-action@v2
         with:
-          version: "17.0.6"
+          version: "17"
+          env: true
 
       - name: Check versions
         run: |
