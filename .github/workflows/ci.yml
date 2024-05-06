@@ -23,4 +23,4 @@ jobs:
           deno-version: v1.x
 
       - name: Run tests
-        run: cd tests && ./test.ts
+        run: cd tests && ./lld && ./test.ts
