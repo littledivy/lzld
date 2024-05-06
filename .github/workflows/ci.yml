@@ -23,6 +23,7 @@ jobs:
           deno-version: v1.x
       - name: Check versions
         run: |
+          brew install llvm
           lld
           chmod +x tests/lld
           tests/lld
