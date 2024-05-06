@@ -9,6 +9,7 @@ extern "C" {
     fn MTLCopyAllDevices() -> *mut std::ffi::c_void;
 
     // Unused 
+    #[allow(dead_code)]
     fn MTLCreateSystemDefaultDevice() -> *mut std::ffi::c_void;
 }
 
