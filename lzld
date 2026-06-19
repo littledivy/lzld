@@ -1,18 +1,24 @@
 #!/bin/bash
 set -e
 
-# Find the path to the `lld` binary.
-lld=$(which lld)
+# Find the macOS LLD linker. Prefer the explicit ld64.lld flavor so the driver
+# doesn't have to guess when invoked directly (e.g. clang -fuse-ld=<this>).
+lld=$(which ld64.lld || true)
 if [ ! -x "$lld" ]; then
-  echo "Error: unable to find 'lld' binary" >&2
+  lld=$(which lld || true)
+fi
+if [ ! -x "$lld" ]; then
+  echo "Error: unable to find 'ld64.lld' or 'lld' binary" >&2
   exit 1
 fi
 
-# Filter out `-framework` arguments.
+# Strip `-framework X` and `-weak_framework X` arguments. The frameworks they
+# name are provided lazily by liblzld (dlopen on first use), so they must not
+# appear as load commands in the output binary.
 args=()
 while [ $# -gt 0 ]; do
   case "$1" in
-    -framework)
+    -framework | -weak_framework)
       shift 2
       ;;
     *)
